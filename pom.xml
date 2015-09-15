@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.qingbo.c2</groupId>
-	<artifactId>c2-base</artifactId>
+	<artifactId>c2-util</artifactId>
 	<version>1.0.0</version>
 
 	<packaging>pom</packaging>

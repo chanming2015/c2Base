@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>c2-base-run</artifactId>
+	<artifactId>c2-base</artifactId>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>com.qingbo.c2</groupId>
-		<artifactId>c2-base</artifactId>
+		<artifactId>c2-util</artifactId>
 		<version>1.0.0</version>
 	</parent>
 
