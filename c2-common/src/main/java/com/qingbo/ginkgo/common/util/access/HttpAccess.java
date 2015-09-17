@@ -3,6 +3,7 @@ package com.qingbo.ginkgo.common.util.access;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -38,6 +39,8 @@ public class HttpAccess {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		try {
 			HttpGet httpGet = new HttpGet(url);
+//			String str = "Mozilla/5.0 (Linux; U; Android 2.3; zh-CN; MI-ONEPlus) AppleWebKit/534.13 (KHTML, like Gecko)  UCBrowser/8.6.0.199 U3/0.8.0 Mobile Safari/534.13";
+//			httpGet.setHeader("user-agent", str);        // 设置浏览器UA
 			CloseableHttpResponse response = httpclient.execute(httpGet);
 			try {
 				HttpEntity entity = response.getEntity();
@@ -63,14 +66,16 @@ public class HttpAccess {
 		return result;
 	}
 	
-	public String post(String url) {
+	public String post(String url, Map<String, String> map) {
 		String result = null;
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		try {
 			HttpPost httpPost = new HttpPost(url);
-			List <NameValuePair> params = new ArrayList<NameValuePair>();  
-	        params.add(new BasicNameValuePair("ak", "sTKmoGmE9LLaOdHuTUF0f9NE1ejnvMFACG"));
-	        params.add(new BasicNameValuePair("openid", "11223366"));
+			
+			List <NameValuePair> params = new ArrayList<NameValuePair>();
+			for (String key : map.keySet()) {
+				params.add(new BasicNameValuePair(key,	map.get(key)));
+			}
 	        httpPost.setEntity(new UrlEncodedFormEntity(params,HTTP.UTF_8));
 			CloseableHttpResponse response = httpclient.execute(httpPost);
 			try {
@@ -95,20 +100,5 @@ public class HttpAccess {
 			}
 		}
 		return result;
-	}
-	
-	public static void main(String[] args) {
-		/*String queryUrl = "http://sdk.mobilesell.cn/ws/SelSum.aspx?CorpID=CQLKJ0003513&Pwd=cn888";
-		System.out.println(HttpAccess.getInstance().get(queryUrl));
-		String sendUrl = "http://sdk.mobilesell.cn/ws/BatchSend.aspx?CorpID=CQLKJ0003513&Pwd=cn888&Mobile=18623193509&Content=YouAreHandsome";
-		System.out.println(HttpAccess.getInstance().get(sendUrl));
-		try {
-			System.out.println(URLEncoder.encode("http://sdk.mobilesell.cn/ws/SelSum.aspx?CorpID=CQLKJ0003513&Pwd=cn888中通", "UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		String queryUrl = "http://120.25.215.147:9000/runUser/findByOpenid.json";
-		System.out.println(HttpAccess.getInstance().post(queryUrl));
 	}
 }

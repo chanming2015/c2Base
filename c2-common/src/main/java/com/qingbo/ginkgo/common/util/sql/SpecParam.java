@@ -17,6 +17,14 @@ public class SpecParam<T> implements Serializable {
 		return this;
 	}
 	
+	public SpecParam<T> isNotNull(String fieldName) {
+		if(!isEmpty(fieldName)) {
+			removeExist(fieldName);
+			specs.add(new Object[] {fieldName, "isNotNull"});
+		}
+		return this;
+	}
+	
 	public SpecParam<T> eq(String fieldName, Object value) {
 		if(!isEmpty(fieldName) && !isEmpty(value)) {
 			removeExist(fieldName);
@@ -41,10 +49,10 @@ public class SpecParam<T> implements Serializable {
 		return this;
 	}
 	
-	public SpecParam<T> between(String fieldName, Comparable<?> value, Comparable<?> value2) {
-		if(!isEmpty(fieldName) && !isEmpty(value) || !isEmpty(value2)) {
+	public SpecParam<T> notLike(String fieldName, String value) {
+		if(!isEmpty(fieldName) && !isEmpty(value)) {
 			removeExist(fieldName);
-			specs.add(new Object[] {fieldName, "between", new Object[] {value, value2}});
+			specs.add(new Object[] {fieldName, "notLike", value});
 		}
 		return this;
 	}
@@ -56,11 +64,27 @@ public class SpecParam<T> implements Serializable {
 		}
 		return this;
 	}
-	
+
 	public SpecParam<T> notIn(String fieldName, Collection<?> value) {
 		if(!isEmpty(fieldName) && !isEmpty(value)) {
 			removeExist(fieldName);
 			specs.add(new Object[] {fieldName, "notIn", value});
+		}
+		return this;
+	}
+	
+	public SpecParam<T> groupBy(String fieldName, Collection<?> value) {
+		if(!isEmpty(fieldName) && !isEmpty(value)) {
+			removeExist(fieldName);
+			specs.add(new Object[] {fieldName, "groupBy", value});
+		}
+		return this;
+	}
+	
+	public SpecParam<T> between(String fieldName, Comparable<?> value, Comparable<?> value2) {
+		if(!isEmpty(fieldName) && !isEmpty(value) || !isEmpty(value2)) {
+			removeExist(fieldName);
+			specs.add(new Object[] {fieldName, "between", new Object[] {value, value2}});
 		}
 		return this;
 	}
