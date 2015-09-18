@@ -26,4 +26,5 @@ import com.qingbo.ginkgo.base.repository.BaseRepository;
  */
 public interface RunAccountRepository extends BaseRepository<RunAccount> {
 
+	RunAccount findByUserId(Long userId);
 }

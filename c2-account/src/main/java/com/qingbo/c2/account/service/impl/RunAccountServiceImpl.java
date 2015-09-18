@@ -180,4 +180,29 @@ public class RunAccountServiceImpl implements RunAccountService {
 		return result;
 	}
 
+	/** @author XuMaoSen 
+	 */
+	@Override
+	public Result<RunAccount> getRunAccountByUserId(Long userId) {
+		
+		Result<RunAccount> result;
+		// 参数校验
+		if(userId == null) {
+			result = errorResult.newFailure("CMS1499", "id");
+			return result;
+		}
+		
+		// 执行查询
+		RunAccount RunJob = null;
+		try{
+			RunJob = runAccountRepository.findByUserId(userId);
+		}catch(Exception e){
+			result = errorResult.newFailure("CMS0021");
+			return result;
+		}
+		// 返回结果
+		result = Result.newSuccess(RunJob);
+		return result;
+	}
+
 }

@@ -30,6 +30,7 @@ import com.qingbo.ginkgo.common.util.sql.SpecParam;
 public interface RunAccountService {
 
 	Result<RunAccount> getRunAccount(Long id);
+	Result<RunAccount> getRunAccountByUserId(Long userId);
 	Result<RunAccount> createRunAccount(RunAccount runAccount);
 	Result<RunAccount> updateRunAccount(RunAccount runAccount);
 	Result<Boolean> deleteRunAccount(Long id);
