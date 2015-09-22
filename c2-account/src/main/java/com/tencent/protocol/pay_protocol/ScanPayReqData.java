@@ -20,19 +20,26 @@ import java.util.Map;
 public class ScanPayReqData {
 
     //每个字段具体的意思请查看API文档
-    private String appid = "";
-    private String mch_id = "";
-    private String device_info = "";
-    private String nonce_str = "";
-    private String sign = "";
-    private String body = "";
-    private String attach = "";
-    private String out_trade_no = "";
-    private int total_fee = 0;
-    private String spbill_create_ip = "";
-    private String time_start = "";
-    private String time_expire = "";
-    private String goods_tag = "";
+    private String appid = "";                     // 公众账号ID
+    private String mch_id = "";                    // 商户号
+    private String device_info = "";               // 设备号
+    private String nonce_str = "";                 // 随机字符串
+    private String sign = "";                      // 签名
+    private String body = "";                      // 商品描述
+    private String detail = "";                    // 商品详情
+    private String attach = "";                    // 附加数据
+    private String out_trade_no = "";              // 商户订单号
+    private String fee_type = "";                  // 货币类型
+    private int total_fee = 0;                     // 总金额
+    private String spbill_create_ip = "";          // 终端IP
+    private String time_start = "";                // 交易起始时间
+    private String time_expire = "";               // 交易结束时间
+    private String goods_tag = "";                 // 商品标记
+    private String notify_url = "";                // 通知地址
+    private String trade_type = "";                // 交易类型
+    private String product_id = "";                // 商品ID
+    private String limit_pay = "";                 // 指定支付方式
+    private String openid = "";                    // 用户标识
     private String auth_code = "";
     private String sdk_version;
 
@@ -219,7 +226,63 @@ public class ScanPayReqData {
         this.sdk_version = sdk_version;
     }
 
-    public Map<String,Object> toMap(){
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public String getFee_type() {
+		return fee_type;
+	}
+
+	public void setFee_type(String fee_type) {
+		this.fee_type = fee_type;
+	}
+
+	public String getNotify_url() {
+		return notify_url;
+	}
+
+	public void setNotify_url(String notify_url) {
+		this.notify_url = notify_url;
+	}
+
+	public String getTrade_type() {
+		return trade_type;
+	}
+
+	public void setTrade_type(String trade_type) {
+		this.trade_type = trade_type;
+	}
+
+	public String getProduct_id() {
+		return product_id;
+	}
+
+	public void setProduct_id(String product_id) {
+		this.product_id = product_id;
+	}
+
+	public String getLimit_pay() {
+		return limit_pay;
+	}
+
+	public void setLimit_pay(String limit_pay) {
+		this.limit_pay = limit_pay;
+	}
+
+	public String getOpenid() {
+		return openid;
+	}
+
+	public void setOpenid(String openid) {
+		this.openid = openid;
+	}
+
+	public Map<String,Object> toMap(){
         Map<String,Object> map = new HashMap<String, Object>();
         Field[] fields = this.getClass().getDeclaredFields();
         for (Field field : fields) {

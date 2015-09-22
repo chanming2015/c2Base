@@ -16,7 +16,9 @@ import com.tencent.protocol.reverse_protocol.ReverseResData;
 import com.tencent.service.ReverseService;
 import com.tencent.service.ScanPayQueryService;
 import com.tencent.service.ScanPayService;
+
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import static java.lang.Thread.sleep;
 
@@ -25,6 +27,7 @@ import static java.lang.Thread.sleep;
  * Date: 2014/12/1
  * Time: 17:05
  */
+@Service("scanPayBusiness")
 public class ScanPayBusiness {
 
     public ScanPayBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException {

@@ -8,6 +8,7 @@
 package com.qingbo.c2.account.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import com.qingbo.ginkgo.base.entity.BaseEntity;
 
@@ -32,8 +33,8 @@ public class AliRefundNotice extends BaseEntity {
 	private String notify_time;            // 通知时间  通知的发送时间，格式为 yyyy-MM-dd HH:mm:ss。
 	private String notify_type;            // 通知类型 trade_status_sync
 	private String notify_id;              // 通知校验 ID 64ce1b6ab92d00ede0ee56ade98fdf2f4c
-	private String sign_type;              // 签名方式 RSA
-	private String sign;                   // 签名
+	@Transient private String sign_type;   // 签名方式 RSA
+	@Transient private String sign;        // 签名
 	private String batch_no;               // 退款批次号
 	private String success_num;            // 退款成功总数
 	private String result_details;         // 退款结果明细
