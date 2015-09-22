@@ -27,7 +27,7 @@ import static java.lang.Thread.sleep;
  * Date: 2014/12/1
  * Time: 17:05
  */
-@Service("scanPayBusiness")
+//@Service("scanPayBusiness")
 public class ScanPayBusiness {
 
     public ScanPayBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
