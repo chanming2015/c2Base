@@ -27,7 +27,6 @@
 		<dependency>
 				<groupId>com.thoughtworks.xstream</groupId>
 				<artifactId>xstream</artifactId>
-				<scope>provided</scope>
 			</dependency>
 		<dependency>
 			<groupId>com.qingbo.c2</groupId>

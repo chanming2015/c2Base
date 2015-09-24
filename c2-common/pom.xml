@@ -88,10 +88,5 @@
 			<artifactId>spring-data-jpa</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-		</dependency>
-
 	</dependencies>
 </project>

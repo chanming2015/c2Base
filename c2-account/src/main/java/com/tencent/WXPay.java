@@ -27,13 +27,14 @@ public class WXPay {
      * @param certLocalPath HTTP证书在服务器中的路径，用来加载证书用
      * @param certPassword HTTP证书的密码，默认等于MCHID
      */
-    public static void initSDKConfiguration(String key,String appID,String mchID,String sdbMchID,String certLocalPath,String certPassword){
+    public static void initSDKConfiguration(String key,String appID,String mchID,String sdbMchID,String certLocalPath,String certPassword,String ip){
         Configure.setKey(key);
         Configure.setAppID(appID);
         Configure.setMchID(mchID);
         Configure.setSubMchID(sdbMchID);
         Configure.setCertLocalPath(certLocalPath);
         Configure.setCertPassword(certPassword);
+        Configure.setIp(ip);
     }
 
     /**

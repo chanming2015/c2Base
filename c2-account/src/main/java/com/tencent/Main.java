@@ -1,9 +1,6 @@
 package com.tencent;
 
-import com.tencent.common.Signature;
 import com.tencent.common.Util;
-
-import java.util.Date;
 
 public class Main {
 
@@ -14,18 +11,39 @@ public class Main {
             //--------------------------------------------------------------------
             //温馨提示，第一次使用该SDK时请到com.tencent.common.Configure类里面进行配置
             //--------------------------------------------------------------------
+        	
+        	String key = "84ef95dr1f584sf498s4f8s4ds84df84";
 
+        	//微信分配的公众号ID（开通公众号之后可以获取到）
+        	String appID = "wxc3334da803774c67";
 
+        	//微信支付分配的商户号ID（开通公众号的微信支付功能之后可以获取到）
+        	String mchID = "1234720902";
 
+        	//受理模式下给子商户分配的子商户号
+        	String subMchID = "";
+
+        	//HTTPS证书的本地路径
+        	String certLocalPath = "/aliyun/cert/apiclient_cert.p12";
+
+        	//HTTPS证书密码，默认密码等于商户号MCHID
+        	String certPassword = "1234720902";
+        	
+        	//机器IP
+        	String ip = "120.25.215.147";
+        	
+        	WXPay wp = new WXPay();
+//        	wp.initSDKConfiguration(key, appID, mchID, subMchID, certLocalPath, certPassword);
+        	
             //--------------------------------------------------------------------
             //PART One:基础组件测试
             //--------------------------------------------------------------------
 
             //1）https请求可用性测试
-            //HTTPSPostRquestWithCert.test();
+//            HTTPSPostRquestWithCert.test();
 
             //2）测试项目用到的XStream组件，本项目利用这个组件将Java对象转换成XML数据Post给API
-            //XStreamTest.test();
+//            XStreamTest.test();
 
 
             //--------------------------------------------------------------------
@@ -33,7 +51,7 @@ public class Main {
             //--------------------------------------------------------------------
 
             //1）测试被扫支付API
-            //PayServiceTest.test();
+//            PayServiceTest.test();
 
             //2）测试被扫订单查询API
             //PayQueryServiceTest.test();
