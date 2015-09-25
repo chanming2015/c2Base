@@ -25,9 +25,13 @@
 			<artifactId>commons-httpclient</artifactId>
 		</dependency>
 		<dependency>
-				<groupId>com.thoughtworks.xstream</groupId>
-				<artifactId>xstream</artifactId>
-			</dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>xmlpull</groupId>
+			<artifactId>xmlpull</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.qingbo.c2</groupId>
 			<artifactId>c2-base</artifactId>

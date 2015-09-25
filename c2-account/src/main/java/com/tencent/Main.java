@@ -1,6 +1,7 @@
 package com.tencent;
 
 import com.tencent.common.Util;
+import com.tencent.protocol.pay_protocol.ScanPayResData;
 
 public class Main {
 
@@ -33,6 +34,10 @@ public class Main {
         	String ip = "120.25.215.147";
         	
         	WXPay wp = new WXPay();
+        	
+        	StringBuffer payServiceResponseString = new StringBuffer("<xml encoding='UTF-8'><appid><![CDATA[wxbf7392ebd1782686]]></appid><attach><![CDATA[token=eeodbq1422333040&wecha_id=oZX3Ws6YW_mPOWzTAM3jqXshmcQU&from=Runner]]></attach><bank_type><![CDATA[CFT]]></bank_type><cash_fee><![CDATA[1]]></cash_fee><fee_type><![CDATA[CNY]]></fee_type><is_subscribe><![CDATA[Y]]></is_subscribe><mch_id><![CDATA[1239271502]]></mch_id><nonce_str><![CDATA[alfgn6mxi28nok21k3h5g5mkk75evwam]]></nonce_str><openid><![CDATA[oZX3Ws6YW_mPOWzTAM3jqXshmcQU]]></openid><out_trade_no><![CDATA[250921155633020004]]></out_trade_no><result_code><![CDATA[SUCCESS]]></result_code><return_code><![CDATA[SUCCESS]]></return_code><sign><![CDATA[849D9E35ADF90F3B99753B70F895BD06]]></sign><time_end><![CDATA[20150924161344]]></time_end><total_fee>1</total_fee><trade_type><![CDATA[JSAPI]]></trade_type><transaction_id><![CDATA[1002520099201509240978597376]]></transaction_id></xml>");
+        	ScanPayResData scanPayResData = (ScanPayResData) Util.getObjectFromXML(payServiceResponseString.toString(), ScanPayResData.class);
+        	System.out.println("aaa");
 //        	wp.initSDKConfiguration(key, appID, mchID, subMchID, certLocalPath, certPassword);
         	
             //--------------------------------------------------------------------
