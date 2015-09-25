@@ -85,4 +85,28 @@ public class NumberUtil {
     	if(interestRate == null) return null;
     	return percentFormat.format(interestRate.doubleValue()*100)+"%";
     }
+    
+    /**
+	 * 
+	 * @author XuMaoSen
+	 * Create Time:2015年9月1日 下午12:46:56
+	 * Description 比较价格是否相等（支付宝金额单位是元，微信金额单位是分）
+	 * @param price
+	 * @param b
+	 * @return
+	 */
+    public static boolean checkPrice(String price, BigDecimal b) {
+		boolean flag = false;
+		if(price == null || b == null){
+			return flag;
+		}
+		flag = price.equals(b.toString());
+		if(flag) {
+			return flag;
+		}
+		Float f1 = new Float(price);
+		Float f2 = new Float(b.toString());
+		flag = f1.equals(f2);
+		return flag;
+	}
 }
