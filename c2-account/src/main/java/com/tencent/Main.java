@@ -13,28 +13,6 @@ public class Main {
             //温馨提示，第一次使用该SDK时请到com.tencent.common.Configure类里面进行配置
             //--------------------------------------------------------------------
         	
-        	String key = "84ef95dr1f584sf498s4f8s4ds84df84";
-
-        	//微信分配的公众号ID（开通公众号之后可以获取到）
-        	String appID = "wxc3334da803774c67";
-
-        	//微信支付分配的商户号ID（开通公众号的微信支付功能之后可以获取到）
-        	String mchID = "1234720902";
-
-        	//受理模式下给子商户分配的子商户号
-        	String subMchID = "";
-
-        	//HTTPS证书的本地路径
-        	String certLocalPath = "/aliyun/cert/apiclient_cert.p12";
-
-        	//HTTPS证书密码，默认密码等于商户号MCHID
-        	String certPassword = "1234720902";
-        	
-        	//机器IP
-        	String ip = "120.25.215.147";
-        	
-        	WXPay wp = new WXPay();
-        	
         	StringBuffer payServiceResponseString = new StringBuffer("<xml encoding='UTF-8'><appid><![CDATA[wxbf7392ebd1782686]]></appid><attach><![CDATA[token=eeodbq1422333040&wecha_id=oZX3Ws6YW_mPOWzTAM3jqXshmcQU&from=Runner]]></attach><bank_type><![CDATA[CFT]]></bank_type><cash_fee><![CDATA[1]]></cash_fee><fee_type><![CDATA[CNY]]></fee_type><is_subscribe><![CDATA[Y]]></is_subscribe><mch_id><![CDATA[1239271502]]></mch_id><nonce_str><![CDATA[alfgn6mxi28nok21k3h5g5mkk75evwam]]></nonce_str><openid><![CDATA[oZX3Ws6YW_mPOWzTAM3jqXshmcQU]]></openid><out_trade_no><![CDATA[250921155633020004]]></out_trade_no><result_code><![CDATA[SUCCESS]]></result_code><return_code><![CDATA[SUCCESS]]></return_code><sign><![CDATA[849D9E35ADF90F3B99753B70F895BD06]]></sign><time_end><![CDATA[20150924161344]]></time_end><total_fee>1</total_fee><trade_type><![CDATA[JSAPI]]></trade_type><transaction_id><![CDATA[1002520099201509240978597376]]></transaction_id></xml>");
         	ScanPayResData scanPayResData = (ScanPayResData) Util.getObjectFromXML(payServiceResponseString.toString(), ScanPayResData.class);
         	System.out.println("aaa");
