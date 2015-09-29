@@ -85,3 +85,29 @@ CREATE TABLE `scan_pay_res_data` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 -- 0921
+
+DROP TABLE IF EXISTS `refund_res_data`;
+CREATE TABLE `refund_res_data` (
+ `id` bigint(20) NOT NULL,
+  `return_code` varchar(16) not null COMMENT '返回状态码',
+  `return_msg` varchar(128) default null COMMENT '返回信息',
+  `appid` varchar(32) default null COMMENT '公众账号ID',
+  `mch_id` varchar(32) default null COMMENT '商户号 ',
+  `device_info` varchar(32) default null COMMENT'设备号',
+  `nonce_str` varchar(32) default null COMMENT '随机字符串',
+  `sign` varchar(32) default null COMMENT '签名',
+  `result_code` varchar(16) default null COMMENT '业务结果',
+  `err_code` varchar(32) default null COMMENT '错误代码',
+  `err_code_des` varchar(128) default null COMMENT'错误代码描述',
+  `transaction_id` varchar(32) default null COMMENT'微信订单号',
+  `out_trade_no` varchar(32) default null COMMENT'商户订单号',
+  `out_refund_no` varchar(32) default null COMMENT'商户退款单号',
+  `refund_id` varchar(32) default null COMMENT'微信退款单号',
+  `refund_fee` mediumint(7) default null COMMENT'退款金额',
+  `coupon_refund_fee` mediumint(7) default null COMMENT'代金券或立减优惠退款金额',
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted` bit(1) DEFAULT b'0',
+  `version` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+--0929

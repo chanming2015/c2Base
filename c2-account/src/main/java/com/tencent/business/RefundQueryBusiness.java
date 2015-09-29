@@ -1,6 +1,5 @@
 package com.tencent.business;
 
-import com.tencent.WXPay;
 import com.tencent.common.*;
 import com.tencent.common.report.ReporterFactory;
 import com.tencent.common.report.protocol.ReportReqData;
@@ -9,10 +8,13 @@ import com.tencent.protocol.refund_query_protocol.RefundOrderData;
 import com.tencent.protocol.refund_query_protocol.RefundQueryReqData;
 import com.tencent.protocol.refund_query_protocol.RefundQueryResData;
 import com.tencent.service.RefundQueryService;
+
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -22,10 +24,6 @@ import java.util.List;
  * Time: 18:51
  */
 public class RefundQueryBusiness {
-
-    public RefundQueryBusiness() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
-        refundQueryService = new RefundQueryService();
-    }
 
     public interface ResultListener{
         //API返回ReturnCode不合法，支付请求逻辑错误，请仔细检测传过去的每一个参数是否合法，或是看API能否被正常访问
@@ -54,7 +52,7 @@ public class RefundQueryBusiness {
     //查询到的退款结果
     private static String orderListResult = "";
 
-    private RefundQueryService refundQueryService;
+    @Autowired private RefundQueryService refundQueryService;
 
     public String getOrderListResult() {
         return orderListResult;
@@ -176,10 +174,6 @@ public class RefundQueryBusiness {
         }
         log.i("查询到的结果如下：");
         log.i(orderListResult);
-    }
-
-    public void setRefundQueryService(RefundQueryService service) {
-        refundQueryService = service;
     }
 
     public String getResult() {

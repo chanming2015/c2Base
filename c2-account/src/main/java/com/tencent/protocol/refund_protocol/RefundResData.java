@@ -1,34 +1,50 @@
 package com.tencent.protocol.refund_protocol;
 
-/**
- * User: rizenguo
- * Date: 2014/10/25
- * Time: 16:12
- */
-public class RefundResData {
+import javax.persistence.Entity;
+import javax.persistence.Transient;
 
-    //协议层
-    private String return_code = "";
-    private String return_msg = "";
+import com.qingbo.ginkgo.base.entity.BaseEntity;
+
+/**
+ * 
+ * Project:c2-account
+ * Package:com.tencent.protocol.refund_protocol
+ * FileName:RefundResData.java
+ * Comments:
+ * JDK Version:
+ * Author XuMaoSen
+ * Create Date:2015年9月28日 下午5:18:30
+ * Modified By:XuMaoSen
+ * Modified Time:
+ * What is Modified:
+ * Description:
+ * Version:
+ */
+@Entity
+public class RefundResData extends BaseEntity{
+
+	private static final long serialVersionUID = -880409520052549327L;
+	//协议层
+    private String return_code = "";                     // 返回状态码
+    private String return_msg = "";                      // 返回信息
 
     //协议返回的具体数据（以下字段在return_code 为SUCCESS 的时候有返回）
-    private String appid = "";
-    private String mch_id = "";
-    private String sub_mch_id = "";
-    private String device_info = "";
-    private String nonce_str = "";
-    private String sign = "";
-    private String result_code = "";
-    private String err_code = "";
-    private String err_code_des = "";
+    private String appid = "";                           // 公众账号ID
+    private String mch_id = "";                          // 商户号
+    @Transient private String sub_mch_id = "";           // 
+    private String device_info = "";                     // 设备号
+    private String nonce_str = "";                       // 随机字符串
+    private String sign = "";                            // 签名
+    private String result_code = "";                     // 业务结果
+    private String err_code = "";                        // 错误代码
+    private String err_code_des = "";                    // 错误代码描述
 
-
-    private String transaction_id = "";
-    private String out_trade_no = "";
-    private String out_refund_no = "";
-    private String refund_id = "";
-    private String refund_fee = "";
-    private String coupon_refund_fee = "";
+    private String transaction_id = "";                  // 微信订单号
+    private String out_trade_no = "";                    // 商户订单号
+    private String out_refund_no = "";                   // 商户退款单号
+    private String refund_id = "";                       // 微信退款单号
+    private String refund_fee = "";                      // 退款金额
+    private String coupon_refund_fee = "";               // 代金券或立减优惠退款金额
 
     public String getReturn_code() {
         return return_code;

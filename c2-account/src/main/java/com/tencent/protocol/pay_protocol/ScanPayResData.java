@@ -4,13 +4,19 @@ import javax.persistence.Entity;
 import com.qingbo.ginkgo.base.entity.BaseEntity;
 
 /**
- * User: rizenguo
- * Date: 2014/10/22
- * Time: 16:42
- */
-
-/**
- * 被扫支付提交Post数据给到API之后，API会返回XML格式的数据，这个类用来装这些数据
+ * 
+ * Project:c2-account
+ * Package:com.tencent.protocol.pay_protocol
+ * FileName:ScanPayResData.java
+ * Comments:
+ * JDK Version:
+ * Author XuMaoSen
+ * Create Date:2015年9月28日 下午5:18:18
+ * Modified By:XuMaoSen
+ * Modified Time:
+ * What is Modified:
+ * Description: 被扫支付提交Post数据给到API之后，API会返回XML格式的数据，这个类用来装这些数据
+ * Version:
  */
 @Entity
 public class ScanPayResData extends BaseEntity {
