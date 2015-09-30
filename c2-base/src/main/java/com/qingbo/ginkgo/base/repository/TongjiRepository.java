@@ -8,4 +8,5 @@ public interface TongjiRepository {
 	List<?> list(String sql);
 	Object[] sums(String sql);
 	int count(String sql, Map<String, Object> params);
+	Map<String, Object> getHints(String sql);
 }

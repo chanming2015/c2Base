@@ -10,5 +10,4 @@
 	<context:component-scan base-package="com.qingbo.c2.account.logger" />
 	<context:component-scan base-package="com.qingbo.c2.account.service.impl" />
 	<context:component-scan base-package="com.tencent.business" />
-	<context:component-scan base-package="com.tencent.protocol.refund_protocol" />
 </beans>

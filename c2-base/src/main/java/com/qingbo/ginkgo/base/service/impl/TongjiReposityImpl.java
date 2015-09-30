@@ -49,4 +49,13 @@ public class TongjiReposityImpl implements TongjiRepository {
 		}
 		return ((Number)query.getSingleResult()).intValue();
 	}
+
+	/** @author XuMaoSen 
+	 */
+	@Override
+	public Map<String, Object> getHints(String sql) {
+		Query query = entityManager.createNativeQuery(sql);
+		return query.getHints();
+	}
+
 }

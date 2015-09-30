@@ -12,4 +12,6 @@ public interface TongjiService {
 	Result<Integer> count(SqlBuilder sqlBuilder, Map<String, Object> params);
 	Result<List> list(SqlBuilder sqlBuilder);
 	Result<Object[]> sums(SqlBuilder sqlBuilder);
+	Result<Map<String, Object>> getHints(SqlBuilder sqlBuilder);
+	
 }

@@ -56,4 +56,17 @@ public class TongjiServiceImpl implements TongjiService {
 		}
 	}
 
+	/** @author XuMaoSen 
+	 */
+	@Override
+	public Result<Map<String, Object>> getHints(SqlBuilder sqlBuilder) {
+		
+		try {
+			Map<String, Object> map = tongjiRepository.getHints(sqlBuilder.sql());
+			return Result.newSuccess(map);
+		}catch (Exception e) {
+			return Result.newFailure(1, e.getMessage());
+		}
+	}
+
 }
