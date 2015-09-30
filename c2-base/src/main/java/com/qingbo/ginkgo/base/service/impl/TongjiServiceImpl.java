@@ -25,6 +25,16 @@ public class TongjiServiceImpl implements TongjiService {
 			return Result.newFailure(1, e.getMessage());
 		}
 	}
+	
+	@Override
+	public Result<Integer> count(SqlBuilder sqlBuilder, Map<String, Object> params) {
+		try {
+			int count = tongjiRepository.count(sqlBuilder.sql(), params);
+			return Result.newSuccess(count);
+		}catch (Exception e) {
+			return Result.newFailure(1, e.getMessage());
+		}
+	}
 
 	@Override
 	public Result<List> list(SqlBuilder sqlBuilder) {
@@ -46,24 +56,14 @@ public class TongjiServiceImpl implements TongjiService {
 		}
 	}
 
-	@Override
-	public Result<Integer> count(SqlBuilder sqlBuilder, Map<String, Object> params) {
-		try {
-			int count = tongjiRepository.count(sqlBuilder.sql(), params);
-			return Result.newSuccess(count);
-		}catch (Exception e) {
-			return Result.newFailure(1, e.getMessage());
-		}
-	}
-
 	/** @author XuMaoSen 
 	 */
 	@Override
-	public Result<Map<String, Object>> getHints(SqlBuilder sqlBuilder) {
+	public Result<Float> sum(SqlBuilder sqlBuilder) {
 		
 		try {
-			Map<String, Object> map = tongjiRepository.getHints(sqlBuilder.sql());
-			return Result.newSuccess(map);
+			float sum = tongjiRepository.sum(sqlBuilder.sql());
+			return Result.newSuccess(sum);
 		}catch (Exception e) {
 			return Result.newFailure(1, e.getMessage());
 		}

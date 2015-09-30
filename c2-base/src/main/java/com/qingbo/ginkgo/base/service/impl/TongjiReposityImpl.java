@@ -53,9 +53,9 @@ public class TongjiReposityImpl implements TongjiRepository {
 	/** @author XuMaoSen 
 	 */
 	@Override
-	public Map<String, Object> getHints(String sql) {
+	public float sum(String sql) {
 		Query query = entityManager.createNativeQuery(sql);
-		return query.getHints();
+		return ((Number)query.getSingleResult()).floatValue();
 	}
 
 }
