@@ -17,7 +17,7 @@ import com.qingbo.ginkgo.base.entity.BaseEntity;
  * Modified By:XuMaoSen
  * Modified Time:
  * What is Modified:
- * Description:
+ * Description: 微信退款返回的数据
  * Version:
  */
 @Entity
