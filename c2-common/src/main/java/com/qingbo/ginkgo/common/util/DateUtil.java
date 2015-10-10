@@ -176,6 +176,22 @@ public class DateUtil {
 	/**
 	 * 
 	 * @author XuMaoSen
+	 * Create Time:2015年10月10日 下午4:15:05
+	 * Description 使用date初始化Calendar
+	 * @param date
+	 * @return
+	 */
+	private static Calendar initCalendar(Date date){
+		Calendar c = Calendar.getInstance();   
+		if(date != null){
+			c.setTime(date);
+		}
+		return c;
+	}
+	
+	/**
+	 * 
+	 * @author XuMaoSen
 	 * Create Time:2015年8月5日 上午9:53:48
 	 * Description 设置当天开始时间（0时0分0秒）
 	 * @param c
@@ -208,10 +224,7 @@ public class DateUtil {
 	 * @return
 	 */
 	public static Date getDayBegin(Date date){
-		Calendar c = Calendar.getInstance();   
-		if(date != null){
-			c.setTime(date);
-		}
+		Calendar c = initCalendar(date);
 		setDayBegin(c);
 		return c.getTime();
 	}
@@ -224,15 +237,42 @@ public class DateUtil {
 	 * @param date
 	 * @return
 	 */
-	public static Date getDayEnd(Date date){
-		Calendar c = Calendar.getInstance();   
-		if(date != null){
-			c.setTime(date);
-		}
+	public static Date getDayEnd(Date date) {
+		Calendar c = initCalendar(date);
 		setDayEnd(c);
 		return c.getTime();
 	}
 	
+	/**
+	 * 
+	 * @author XuMaoSen
+	 * Create Time:2015年8月5日 上午9:55:04
+	 * Description 设置时间往后增加interval天（可以是负数）
+	 * @param date
+	 * @param interval
+	 * @return
+	 */
+	public static Date getDayAdd(Date date, int interval){
+		Calendar c = initCalendar(date);
+		c.add(Calendar.DAY_OF_MONTH, interval);
+		return c.getTime();
+	}
+	
+	/**
+	 * 
+	 * @author XuMaoSen
+	 * Create Time:2015年8月5日 上午10:07:03
+	 * Description 设置时间往后增加interval分钟
+	 * @param date
+	 * @param interval
+	 * @return
+	 */
+	public static Date getTimeAdd(Date date, int interval){
+		Calendar c = initCalendar(date);
+		c.add(Calendar.MINUTE, interval);
+		return c.getTime();
+	}
+
 	/**
 	 * 
 	 * @author XuMaoSen
@@ -241,13 +281,25 @@ public class DateUtil {
 	 * @param date
 	 * @return
 	 */
-	public static Date getNextDayBegin(Date date){
-		Calendar c = Calendar.getInstance();   
-		if(date != null){
-			c.setTime(date);
-		}
+	public static Date getNextDayBegin(Date date) {
+		Calendar c = initCalendar(date);
 		c.add(Calendar.DAY_OF_MONTH, 1);
 		setDayBegin(c);
+		return c.getTime();
+	}
+	
+	/**
+	 * 
+	 * @author XuMaoSen
+	 * Create Time:2015年8月5日 上午9:31:20
+	 * Description 获取下一天结束时间
+	 * @param date
+	 * @return
+	 */
+	public static Date getNextDayEnd(Date date) {
+		Calendar c = initCalendar(date);
+		c.add(Calendar.DAY_OF_MONTH, 1);
+		setDayEnd(c);
 		return c.getTime();
 	}
 	
@@ -260,10 +312,7 @@ public class DateUtil {
 	 * @return
 	 */
 	public static Date getMonthDayBegin(Date date){
-		Calendar c = Calendar.getInstance();
-		if(date != null){
-			c.setTime(date);
-		}
+		Calendar c = initCalendar(date);
 		c.set(Calendar.DATE, 1);
 		setDayBegin(c);
 		return c.getTime();
@@ -278,10 +327,7 @@ public class DateUtil {
 	 * @return
 	 */
 	public static Date getMonthDayEnd(Date date){
-		Calendar c = Calendar.getInstance();
-		if(date != null){
-			c.setTime(date);
-		}
+		Calendar c = initCalendar(date);
 		int max = c.getActualMaximum(Calendar.DATE);
 		c.set(Calendar.DATE, max);
 		setDayEnd(c);
@@ -291,73 +337,21 @@ public class DateUtil {
 	/**
 	 * 
 	 * @author XuMaoSen
-	 * Create Time:2015年8月5日 上午9:55:04
-	 * Description 设置时间往后增加interval天（可以是负数）
+	 * Create Time:2015年10月10日 下午4:32:25
+	 * Description 使用时间参数设置时间
 	 * @param date
-	 * @param interval
+	 * @param hours
+	 * @param minutes
+	 * @param seconds
 	 * @return
 	 */
-	public static Date dayAdd(Date date, int interval){
-		return add(date, Calendar.DAY_OF_MONTH, interval);
-	}
-	
-	/**
-	 * 
-	 * @author XuMaoSen
-	 * Create Time:2015年8月5日 上午10:07:03
-	 * Description 设置时间往后增加interval分钟
-	 * @param date
-	 * @param interval
-	 * @return
-	 */
-	public static Date timeAdd(Date date, int interval){
-		return add(date, Calendar.MINUTE, interval);
-	}
-	
-	/**
-     * Adds to a date returning a new object.
-     * The original {@code Date} is unchanged.
-     *
-     * @param date  the date, not null
-     * @param calendarField  the calendar field to add to
-     * @param amount  the amount to add, may be negative
-     * @return the new {@code Date} with the amount added
-     * @throws IllegalArgumentException if the date is null
-     */
-    private static Date add(Date date, int calendarField, int amount) {
-    	Calendar c = Calendar.getInstance();   
-		if(date != null){
-			c.setTime(date);
-		}
-        c.add(calendarField, amount);
-        return c.getTime();
-    }
-    
-    public static Date getTaskTime(Date date){
-    	Calendar c = Calendar.getInstance();   
-		if(date != null){
-			c.setTime(date);
-		}
-		c.set(Calendar.HOUR_OF_DAY, 7);
-		c.set(Calendar.MINUTE, 0);
-		c.set(Calendar.SECOND, 0);
+	public static Date getTime(Date date, int hours, int minutes, int seconds){
+    	Calendar c = initCalendar(date);
+		c.set(Calendar.HOUR_OF_DAY, hours);
+		c.set(Calendar.MINUTE, minutes);
+		c.set(Calendar.SECOND, seconds);
 		return c.getTime();
     }
-	
-	/**
-	 * 
-	 * @author XuMaoSen
-	 * Create Time:2015年8月3日 下午4:30:25
-	 * Description 计算参数时间跟当前时间的差数（当前时间 - 参数时间）
-	 * @param date
-	 * @return 相差天数
-	 */
-	public static int dayDiffer(Date date){
-		Calendar c = Calendar.getInstance();
-		long time = c.getTimeInMillis() - date.getTime();
-		int result = (int) (time / 86400000); // 1000*60*60*24 = 86400000
-		return result;
-	}
 
 	/**
 	 * 
@@ -371,14 +365,18 @@ public class DateUtil {
 		return c.getTime();
 	}
 	
-	/*public static void main(String[] args) {
-		Date date = new Date();
-//		System.out.println(format(getDayBegin(date), FormatType.DAYTIME));
-//		System.out.println(format(getNextDayBegin(date), FormatType.DAYTIME));
-//		System.out.println(format(getNextDayBegin(dayAdd(date, 10)), FormatType.DAYTIME));
-//		System.out.println(format(getNextDayBegin(dayAdd(date, -23)), FormatType.DAYTIME));
-//		DateUtil.dayDiffer(date);
-//		System.out.println(DateUtil.dayAddTime(date, -30));
-		System.out.println(DateUtil.dayAdd(date, -10));
-	}*/
+	/**
+	 * 
+	 * @author XuMaoSen
+	 * Create Time:2015年8月3日 下午4:30:25
+	 * Description 计算参数时间跟当前时间的差数（当前时间 - 参数时间）
+	 * @param date
+	 * @return 相差天数
+	 */
+	public static int getDayDiffer(Date date){
+		Calendar c = Calendar.getInstance();
+		long time = c.getTimeInMillis() - date.getTime();
+		int result = (int) (time / 86400000); // 1000*60*60*24 = 86400000
+		return result;
+	}
 }
