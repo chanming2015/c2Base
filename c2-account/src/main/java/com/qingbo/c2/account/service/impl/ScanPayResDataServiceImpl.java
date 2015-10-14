@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qingbo.c2.account.entity.RunAccount;
 import com.qingbo.c2.account.repository.ScanPayResDataRepository;
 import com.qingbo.c2.account.service.ScanPayResDataService;
 import com.qingbo.ginkgo.base.service.QueuingService;
@@ -73,7 +72,7 @@ public class ScanPayResDataServiceImpl implements ScanPayResDataService {
 		Result<ScanPayResData> result;
 		// 校验参数
 		if(scanPayResData == null){
-			result = errorResult.newFailure("CMS1499", RunAccount.class.toString());
+			result = errorResult.newFailure("CMS1499", ScanPayResData.class.toString());
 			return result;
 		}
 		// 准备序列号

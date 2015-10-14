@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS `run_account`;
 CREATE TABLE `run_account` (
   `id` bigint(20) NOT NULL,
-  `user_id` varchar(20) NOT NULL UNIQUE,
-  `account_balance` decimal(10,2) NOT NULL DEFAULT '0',
+  `user_id` bigint(20) NOT NULL UNIQUE COMMENT '用户ID',
+  `account_balance` decimal(10,2) NOT NULL DEFAULT '0' COMMENT '账户余额',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` bit(1) DEFAULT b'0',
   `version` int(11) DEFAULT '1',
@@ -111,3 +111,17 @@ CREATE TABLE `refund_res_data` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 --0929
+
+DROP TABLE IF EXISTS `run_withdraw_cash`;
+CREATE TABLE `run_withdraw_cash` (
+  `id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL COMMENT '用户ID',
+  `money` float(6,2) NOT NULL COMMENT '提现金额',
+  `status` varchar(10) NOT NULL COMMENT '提现状态',
+  `info` varchar(32) DEFAULT NULL COMMENT '审核信息',
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted` bit(1) DEFAULT b'0',
+  `version` int(11) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--1014
