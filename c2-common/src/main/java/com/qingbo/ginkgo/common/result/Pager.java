@@ -17,16 +17,17 @@ import java.util.List;
  * pager.getStartRow(); pager.getEndRow();//limit start,pageSize=endRow-startRow+1
  * </code></pre>
  * @author hongwei
+ * @param <T>
  */
-@SuppressWarnings({ "rawtypes", "serial" })
-public class Pager implements Serializable {
+@SuppressWarnings({"serial"})
+public class Pager<T> implements Serializable {
 	private int totalRows = -1;
 	private int pageSize = 30;
 	private int totalPages = 1;
 	private int currentPage = 1;
 	private int pageWindow = 7;//页码窗口
-	private List elements = null;
-	private List others = null;
+	private List<T> elements = null;
+	private List<T> others = null;
 	private String direction = null;
 	private String properties = null;
 
@@ -81,14 +82,6 @@ public class Pager implements Serializable {
 		this.pageSize = pageSize;
 	}
 	
-	public void setPageSize(String pageSize, int defaultPageSize) {
-		try {
-			this.pageSize = Integer.parseInt(pageSize);
-		}catch(Exception e) {
-			this.pageSize = defaultPageSize;
-		}
-	}
-
 	public int getStartRow() {
 		return (currentPage - 1) * pageSize;
 	}
@@ -154,22 +147,22 @@ public class Pager implements Serializable {
 	/**
 	 * 获取元素列表
 	 */
-	public List getElements() {
+	public List<T> getElements() {
 		return elements;
 	}
 
-	public void setElements(List elements) {
+	public void setElements(List<T> elements) {
 		this.elements = elements;
 	}
 
 	/**
 	 * 获取附加信息，最好将附加信息绑定到element实体上
 	 */
-	public List getOthers() {
+	public List<T> getOthers() {
 		return others;
 	}
 
-	public void setOthers(List others) {
+	public void setOthers(List<T> others) {
 		this.others = others;
 	}
 }

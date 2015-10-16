@@ -8,6 +8,14 @@ import java.util.Arrays;
 
 @SuppressWarnings("serial")
 public class Result<T> implements Serializable {
+	
+	public Result() {
+	}
+
+	public Result(T object) {
+		this.object = object;
+	}
+
 	/**
 	 * 接口调用成功，不需要返回对象
 	 */
