@@ -122,7 +122,11 @@ public class RunAccountServiceImpl implements RunAccountService {
 		try{
 			// 准备对象
 			runAccountFetched = runAccountRepository.findOne(runAccount.getId());
-			runAccountFetched.setAccountBalance(runAccount.getAccountBalance() == null ? runAccountFetched.getAccountBalance() : runAccount.getAccountBalance());
+			if (runAccount.getAccountBalance() != null) {
+				if (runAccount.getAccountBalance().doubleValue() >= 0.0) {
+					runAccountFetched.setAccountBalance(runAccount.getAccountBalance());
+				}
+			}
 			// 持久对象
 			runAccountRepository.save(runAccountFetched);
 		}catch(Exception e){
